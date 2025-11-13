@@ -25,7 +25,7 @@ const ReleasesGrid: React.FC<ReleasesGridProps> = ({ title }) => {
 
   return (
     <Container>
-      <h2 className="text-4xl font-bold text-center mb-10 text-secondary uppercase">
+      <h2 className="text-secondary mb-10 text-center text-4xl font-bold uppercase">
         {title}
       </h2>
       <Suspense fallback={<div>Loading releases...</div>}>

@@ -11,7 +11,7 @@ interface LayoutProps {
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
-    <div className="min-h-screen text-text-color font-sans antialiased">
+    <div className="text-text-color min-h-screen font-sans antialiased">
       <Header />
       <main className="flex flex-col items-center justify-start">
         {children}

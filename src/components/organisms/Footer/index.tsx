@@ -16,12 +16,12 @@ const Footer: React.FC = () => {
 
   return (
     <Container>
-      <footer className="w-full bg-background border-t border-primary/50 mt-12 py-6">
+      <footer className="bg-background border-primary/50 mt-12 w-full border-t py-6">
         <div className="container mx-auto px-4 text-center text-sm">
           <p className="mb-2">{localizedContent.sections.contactPrompt}</p>
           <Button
             href={`mailto:${contactEmail}`}
-            className="bg-transparent hover:bg-transparent text-primary font-semibold transition-colors duration-200 text-lg"
+            className="text-primary bg-transparent text-lg font-semibold transition-colors duration-200 hover:bg-transparent"
           >
             {contactEmail}
           </Button>

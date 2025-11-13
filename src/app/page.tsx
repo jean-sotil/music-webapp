@@ -8,7 +8,7 @@ import ReleasesGrid from "@/components/organisms/ReleasesGrid";
 
 export default function Home() {
   return (
-    <Container className="w-full mx-auto">
+    <Container className="mx-auto w-full">
       <div id="hero">
         <Hero />
       </div>
@@ -17,7 +17,7 @@ export default function Home() {
         <ReleasesGrid />
       </section>
 
-      <hr className="border-t border-secondary/20 my-16" />
+      <hr className="border-secondary/20 my-16 border-t" />
 
       {/* ==================================================
         SECTION 3: MUSIC EMBED
@@ -32,7 +32,7 @@ export default function Home() {
         ==================================================
       */}
       <section id="contact" className="mb-16 text-center">
-        <h2 className="text-4xl font-bold mb-6 text-primary uppercase">
+        <h2 className="text-primary mb-6 text-4xl font-bold uppercase">
           Get in Touch
         </h2>
         <p className="text-xl">

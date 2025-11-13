@@ -32,7 +32,7 @@ const Header: React.FC = () => {
     <Button
       key={item.name}
       href={item.href}
-      className="text-black hover:text-primary uppercase font-semibold"
+      className="hover:text-primary font-semibold text-black uppercase"
       onClick={() => setIsOpen(false)}
       transparent
       size="md"
@@ -47,8 +47,8 @@ const Header: React.FC = () => {
       // TODO:
       // Temporary handler: change the route/state
       onClick={() => console.log(`Switching language to ${l}`)}
-      className={`px-2 text-sm font-semibold rounded transition-colors duration-200 uppercase ${
-        l === lang ? "text-primary" : "text-black hover:text-primary"
+      className={`rounded px-2 text-sm font-semibold uppercase transition-colors duration-200 ${
+        l === lang ? "text-primary" : "hover:text-primary text-black"
       }`}
       size="md"
       transparent
@@ -66,21 +66,21 @@ const Header: React.FC = () => {
   };
 
   return (
-    <header className="fixed top-0 left-0 w-full bg-secondary/90 backdrop-blur-sm z-50 shadow-lg border-b border-primary/50">
+    <header className="bg-secondary/90 border-primary/50 fixed top-0 left-0 z-50 w-full border-b shadow-lg backdrop-blur-sm">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+        <div className="flex h-16 items-center justify-between">
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-4">
+          <nav className="hidden items-center gap-4 md:flex">
             {navButtons}
 
-            <div className="flex space-x-2 ml-4">{LangButtons}</div>
+            <div className="ml-4 flex space-x-2">{LangButtons}</div>
           </nav>
 
           {/* Mobile Menu Button */}
-          <div className="md:hidden flex items-center">
+          <div className="flex items-center md:hidden">
             <button
               type="button"
-              className="inline-flex items-center justify-center p-2 rounded-md text-primary hover:text-secondary focus:outline-none"
+              className="text-primary hover:text-secondary inline-flex items-center justify-center rounded-md p-2 focus:outline-none"
               onClick={() => setIsOpen(!isOpen)}
             >
               <span className="sr-only">Open main menu</span>
@@ -124,11 +124,11 @@ const Header: React.FC = () => {
 
       {/* Mobile Menu Panel */}
       {isOpen && (
-        <div className="md:hidden bg-background border-t border-primary/50">
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+        <div className="bg-background border-primary/50 border-t md:hidden">
+          <div className="space-y-1 px-2 pt-2 pb-3 sm:px-3">
             {navButtons}
 
-            <div className="flex justify-center p-2 space-x-3 border-t border-primary/50 mt-3 pt-3">
+            <div className="border-primary/50 mt-3 flex justify-center space-x-3 border-t p-2 pt-3">
               {LangButtons}
             </div>
           </div>

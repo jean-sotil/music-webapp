@@ -18,7 +18,7 @@ const ReleaseCard: React.FC<ReleaseCardProps> = ({ release }) => {
 
   return (
     <Card>
-      <div className="relative w-full aspect-square">
+      <div className="relative aspect-square w-full">
         <Image
           src={coverPath}
           alt={`${title} Cover Art`}

@@ -15,7 +15,7 @@ const HeroSection: React.FC = () => {
 
   if (!newRelease) {
     return (
-      <section className="min-h-[70vh] flex items-center justify-center text-center">
+      <section className="flex min-h-[70vh] items-center justify-center text-center">
         <p className="text-xl text-gray-400">
           No new release configured in the content file.
         </p>
@@ -26,15 +26,15 @@ const HeroSection: React.FC = () => {
   const { title, listenLink } = newRelease;
 
   return (
-    <Container>
-      <div className="absolute inset-0 z-0 w-full h-full overflow-hidden">
-        <div className="absolute inset-0 bg-background opacity-70"></div>
+    <Container className="relative flex h-screen">
+      <div className="absolute inset-0 z-0 h-full w-full overflow-hidden">
+        <div className="bg-background absolute inset-0 opacity-70"></div>
       </div>
 
-      <div className="relative z-10 text-center p-6 md:p-12 max-w-4xl">
+      <div className="relative z-10 w-full text-center">
         <Title level={1}>{title}</Title>
 
-        <p className="text-lg md:text-xl font-light mb-10 text-text-color/80">
+        <p className="text-text-color/80 mb-10 text-lg font-light md:text-xl">
           {localizedText.hero.tagline}
         </p>
 
