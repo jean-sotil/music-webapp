@@ -1,38 +1,41 @@
 "use client";
 
-import { createContext, useCallback, useContext } from "react";
-import type { ContentType } from "@/utils/content-utils";
+import { createContext, useContext, useMemo, useState } from "react";
 
-type AppContextType = {
+import type { ContentType, Langs } from "@/utils/actions/content-utils";
+
+export type AppContextType = {
   content: ContentType;
-  getLocalizedContent: (lang: "en" | "es") => ContentType["en" | "es"];
-  lang: "en" | "es";
+  currLang: Langs;
+  localizedContent: ContentType[Langs];
+  setLang: (lang: Langs) => void;
 } | null;
 
-const AppContext = createContext<AppContextType>(null);
+export const AppContext = createContext<AppContextType>(null);
 
 export default function AppContextProvider({
   children,
   content,
+  lang,
 }: {
   children: React.ReactNode;
   content: ContentType;
+  lang: Langs;
 }) {
-  const lang = content.settings.defaultLang;
+  const [currLang, setCurrLang] = useState(lang);
 
-  const getLocalizedContent = useCallback(
-    (lang: NonNullable<AppContextType>["lang"]) => {
-      return content[lang];
-    },
-    [content],
+  const localizedContent = useMemo(
+    () => content[currLang],
+    [currLang, content],
   );
 
   return (
     <AppContext.Provider
       value={{
         content,
-        getLocalizedContent,
-        lang,
+        currLang,
+        localizedContent,
+        setLang: setCurrLang,
       }}
     >
       {children}

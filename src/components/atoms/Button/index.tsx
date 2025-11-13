@@ -7,7 +7,7 @@ import { twMerge } from "tailwind-merge";
 interface BaseProps {
   children: React.ReactNode;
   className?: string;
-  onClick?: ((event: React.MouseEvent<HTMLAnchorElement>) => void) | undefined;
+  onClick?: ((event: React.MouseEvent<HTMLElement>) => void) | undefined;
   rel?: string;
   size?: "sm" | "md" | "lg";
   transparent?: boolean;
@@ -68,7 +68,7 @@ const Button: React.FC<CombinedProps> = ({
         href={linkProps.href}
         className={finalClasses}
         onClick={
-          linkProps.onClick as
+          onClick as
             | ((event: React.MouseEvent<HTMLAnchorElement>) => void)
             | undefined
         }
@@ -86,7 +86,7 @@ const Button: React.FC<CombinedProps> = ({
     <button
       type={buttonProps.type ?? "button"}
       onClick={
-        buttonProps.onClick as
+        onClick as
           | ((event: React.MouseEvent<HTMLButtonElement>) => void)
           | undefined
       }

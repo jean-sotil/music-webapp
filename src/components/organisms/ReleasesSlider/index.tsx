@@ -1,6 +1,6 @@
 import type React from "react";
 
-import { getAllReleases } from "@/utils/content-utils";
+import { getAllReleases } from "@/utils/actions/content-utils";
 
 import Title from "../../atoms/Title";
 import ReleaseCard from "../../molecules/ReleaseCard";

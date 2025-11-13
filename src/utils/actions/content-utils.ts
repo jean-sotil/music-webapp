@@ -1,6 +1,8 @@
 import fs from "node:fs";
 import path from "node:path";
 
+export type Langs = "en" | "es";
+
 type LocalizedContent = {
   navigation: {
     releases: string;
@@ -20,6 +22,7 @@ type LocalizedContent = {
 };
 
 export type ContentType = {
+  langs: Langs[];
   settings: {
     name: string;
     title: string;
@@ -30,7 +33,7 @@ export type ContentType = {
       background: string;
       text: string;
     };
-    defaultLang: "en" | "es";
+    defaultLang: Langs;
   };
   contact: {
     email: string;
@@ -71,7 +74,7 @@ export function getContent(): ContentType {
  * @param lang - The desired language ('en' or 'es').
  * @returns The localized text content.
  */
-export function getLocalizedContent(lang: "en" | "es"): LocalizedContent {
+export function getLocalizedContent(lang: Langs): LocalizedContent {
   const content = getContent();
   return content[lang];
 }
@@ -83,4 +86,13 @@ export function getLocalizedContent(lang: "en" | "es"): LocalizedContent {
 export function getAllReleases() {
   const content = getContent();
   return content.releases;
+}
+
+/**
+ * Returns default lang
+ * @returns defaultLang value
+ */
+export function getDefaultLang() {
+  const content = getContent();
+  return content.settings.defaultLang;
 }

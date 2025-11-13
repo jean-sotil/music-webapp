@@ -3,7 +3,7 @@
 import Image from "next/image";
 import type React from "react";
 
-import type { ContentType } from "@/utils/content-utils";
+import type { ContentType } from "@/utils/actions/content-utils";
 
 import Button from "../../atoms/Button";
 import Card from "../../atoms/Card";

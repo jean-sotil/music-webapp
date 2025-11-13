@@ -7,7 +7,8 @@ import Layout from "@/components/organisms/Layout";
 
 import AppContext from "@/context";
 
-import { getContent } from "@/utils/content-utils";
+import type { Langs } from "@/utils/actions/content-utils";
+import { getContent } from "@/utils/actions/content-utils";
 
 const content = getContent();
 
@@ -22,11 +23,15 @@ export const metadata: Metadata = {
   description: content.settings.description,
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
+  params,
 }: {
   children: React.ReactNode;
+  params: Promise<{ lang: string }>;
 }) {
+  const { lang } = (await params) as { lang: Langs };
+
   const customStyles = {
     "--color-primary": content.settings.theme.primary,
     "--color-secondary": content.settings.theme.secondary,
@@ -35,10 +40,9 @@ export default function RootLayout({
   } as React.CSSProperties;
 
   return (
-    <html lang="en" className={roboto.className}>
-      <head></head>
+    <html lang={lang} className={roboto.className}>
       <body style={customStyles}>
-        <AppContext content={content}>
+        <AppContext content={content} lang={lang}>
           <Layout>{children}</Layout>
         </AppContext>
       </body>

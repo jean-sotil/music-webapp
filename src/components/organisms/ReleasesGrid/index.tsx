@@ -1,7 +1,7 @@
 import type React from "react";
 import { Suspense } from "react";
 
-import { getAllReleases } from "@/utils/content-utils";
+import { getAllReleases } from "@/utils/actions/content-utils";
 
 import Container from "../../atoms/Container";
 import ReleaseCard from "../../molecules/ReleaseCard";

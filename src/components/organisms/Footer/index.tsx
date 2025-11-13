@@ -8,10 +8,9 @@ import Button from "../../atoms/Button";
 import Container from "../../atoms/Container";
 
 const Footer: React.FC = () => {
-  const { content, getLocalizedContent, lang } = useAppContext();
+  const { content, localizedContent } = useAppContext();
   const { name } = content.settings;
   const contactEmail = content.contact.email;
-  const localizedContent = getLocalizedContent(lang);
   const currentYear = new Date().getFullYear();
 
   return (

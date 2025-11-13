@@ -9,8 +9,7 @@ import Container from "../../atoms/Container";
 import Title from "../../atoms/Title";
 
 const HeroSection: React.FC = () => {
-  const { content, getLocalizedContent, lang } = useAppContext();
-  const localizedText = getLocalizedContent(lang);
+  const { content, localizedContent } = useAppContext();
   const newRelease = content.releases.find((release) => release.isNewRelease);
 
   if (!newRelease) {
@@ -35,11 +34,11 @@ const HeroSection: React.FC = () => {
         <Title level={1}>{title}</Title>
 
         <p className="mb-10 font-light text-lg text-text-color/80 md:text-xl">
-          {localizedText.hero.tagline}
+          {localizedContent.hero.tagline}
         </p>
 
         <Button href={listenLink} target="_blank">
-          {localizedText.hero.cta}
+          {localizedContent.hero.cta}
         </Button>
 
         <p className="mt-6 text-gray-300 text-sm">{title} is out now!</p>

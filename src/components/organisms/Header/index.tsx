@@ -1,32 +1,31 @@
 "use client";
 
+import { usePathname, useRouter } from "next/navigation";
 import type React from "react";
-import { useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 
 import { useAppContext } from "@/context";
+import type { Langs } from "@/utils/actions/content-utils";
 
 import Button from "../../atoms/Button";
 
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
-
-  const { content, getLocalizedContent } = useAppContext();
-
-  const lang = content.settings.defaultLang;
-  const localizedContent = getLocalizedContent(lang);
+  const router = useRouter();
+  const pathname = usePathname();
+  const { content, localizedContent, setLang, currLang } = useAppContext();
+  const { langs } = content;
 
   const headerProps = {
-    lang: lang,
     name: content.settings.name,
     navItems: [
       { name: localizedContent.navigation.releases, href: "#releases" },
       { name: localizedContent.navigation.listen, href: "#music" },
       { name: localizedContent.navigation.contact, href: "#contact" },
     ],
-    availableLangs: ["en", "es"],
   };
 
-  const { name, navItems, availableLangs } = headerProps;
+  const { name, navItems } = headerProps;
 
   const navButtons = navItems.map((item) => (
     <Button
@@ -41,21 +40,38 @@ const Header: React.FC = () => {
     </Button>
   ));
 
-  const LangButtons = availableLangs.map((l) => (
-    <Button
-      key={l}
-      // TODO:
-      // Temporary handler: change the route/state
-      onClick={() => console.log(`Switching language to ${l}`)}
-      className={`rounded px-2 font-semibold text-sm uppercase transition-colors duration-200 ${
-        l === lang ? "text-primary" : "text-black hover:text-primary"
-      }`}
-      size="md"
-      transparent
-    >
-      {l}
-    </Button>
-  ));
+  const handleLangChange = useCallback(
+    (newLang: Langs) => {
+      if (newLang === currLang) return;
+
+      // Update the context state
+      setLang(newLang);
+
+      // Navigate to the new language path
+      const newPathname = pathname.replace(`/${currLang}`, `/${newLang}`);
+      router.push(newPathname);
+    },
+    [currLang, pathname, router, setLang],
+  );
+
+  const LangButtons = useMemo(
+    () =>
+      langs.map((lang) => (
+        <Button
+          key={lang}
+          className={`rounded px-2 font-semibold text-sm uppercase transition-colors duration-200 ${
+            lang === currLang ? "text-primary" : "text-black hover:text-primary"
+          }`}
+          disabled={lang === currLang}
+          onClick={() => handleLangChange(lang as Langs)}
+          size="md"
+          transparent
+        >
+          {lang}
+        </Button>
+      )),
+    [currLang, handleLangChange, langs],
+  );
 
   const svgProps = {
     className: "h-6 w-6",
