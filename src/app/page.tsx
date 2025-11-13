@@ -7,7 +7,6 @@ import ReleasesGrid from "@/components/organisms/ReleasesGrid";
 // import ContactSection from '@/components/ContactSection';
 
 export default function Home() {
-
   return (
     <Container className="w-full mx-auto">
       <div id="hero">
@@ -15,7 +14,7 @@ export default function Home() {
       </div>
 
       <section id="releases">
-        <ReleasesGrid/>
+        <ReleasesGrid />
       </section>
 
       <hr className="border-t border-secondary/20 my-16" />
@@ -25,9 +24,7 @@ export default function Home() {
         (Will be replaced by <MusicEmbed /> in Task 9)
         ==================================================
       */}
-      <section id="music" className="mb-16">
-        
-      </section>
+      <section id="music" className="mb-16"></section>
 
       {/* ==================================================
         SECTION 4: CONTACT (The actual contact section is in the footer, 
@@ -40,12 +37,9 @@ export default function Home() {
         </h2>
         <p className="text-xl">
           Scroll to the bottom or{" "}
-          <a
-            href={`mailto:`}
-            className="text-secondary hover:underline"
-          >
+          <a href={`mailto:`} className="text-secondary hover:underline">
             click here
-          </a>{" "}
+          </a>
           to send an email!
         </p>
       </section>

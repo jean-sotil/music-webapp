@@ -1,11 +1,11 @@
 "use client";
 
-import { createContext, useContext, useCallback } from "react";
+import { createContext, useCallback, useContext } from "react";
 import type { ContentType } from "@/utils/content-utils";
 
 type AppContextType = {
   content: ContentType;
-  getLocalizedContent: (lang: "en" | "es") => ContentType[string];
+  getLocalizedContent: (lang: "en" | "es") => ContentType["en" | "es"];
   lang: "en" | "es";
 } | null;
 
@@ -24,7 +24,7 @@ export default function AppContextProvider({
     (lang: NonNullable<AppContextType>["lang"]) => {
       return content[lang];
     },
-    [content]
+    [content],
   );
 
   return (

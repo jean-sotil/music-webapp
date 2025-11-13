@@ -1,11 +1,13 @@
 "use client";
 
-import React, { useState } from "react";
+import type React from "react";
+import { useState } from "react";
+
 import { useAppContext } from "@/context";
 
 import Button from "../../atoms/Button";
 
-const Header: React.FC<{}> = () => {
+const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const { content, getLocalizedContent } = useAppContext();
@@ -46,9 +48,7 @@ const Header: React.FC<{}> = () => {
       // Temporary handler: change the route/state
       onClick={() => console.log(`Switching language to ${l}`)}
       className={`px-2 text-sm font-semibold rounded transition-colors duration-200 uppercase ${
-        l === lang
-          ? "text-primary"
-          : "text-black hover:text-primary"
+        l === lang ? "text-primary" : "text-black hover:text-primary"
       }`}
       size="md"
       transparent
@@ -56,6 +56,14 @@ const Header: React.FC<{}> = () => {
       {l}
     </Button>
   ));
+
+  const svgProps = {
+    className: "h-6 w-6",
+    fill: "none",
+    stroke: "currentColor",
+    viewBox: "0 0 24 24",
+    xmlns: "http://www.w3.org/2000/svg",
+  };
 
   return (
     <header className="fixed top-0 left-0 w-full bg-secondary/90 backdrop-blur-sm z-50 shadow-lg border-b border-primary/50">
@@ -65,7 +73,6 @@ const Header: React.FC<{}> = () => {
           <nav className="hidden md:flex items-center gap-4">
             {navButtons}
 
-            {/* Language Switcher (Desktop) */}
             <div className="flex space-x-2 ml-4">{LangButtons}</div>
           </nav>
 
@@ -77,15 +84,9 @@ const Header: React.FC<{}> = () => {
               onClick={() => setIsOpen(!isOpen)}
             >
               <span className="sr-only">Open main menu</span>
-              {/* Toggle Icon (Simple Menu/Close based on state) */}
               {isOpen ? (
-                <svg
-                  className="h-6 w-6"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
+                <svg aria-label="Closed menu" {...svgProps}>
+                  <title>Closed menu</title>
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
@@ -94,13 +95,8 @@ const Header: React.FC<{}> = () => {
                   />
                 </svg>
               ) : (
-                <svg
-                  className="h-6 w-6"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
+                <svg aria-label="Open menu" {...svgProps}>
+                  <title>Open menu</title>
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
@@ -114,7 +110,6 @@ const Header: React.FC<{}> = () => {
 
           {/* Logo */}
           <div className="shrink-0">
-            {/* Link to the top of the page */}
             <Button
               href="/"
               className="font-extrabold tracking-wider text-black"
@@ -133,7 +128,6 @@ const Header: React.FC<{}> = () => {
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             {navButtons}
 
-            {/* Language Switcher (Mobile) */}
             <div className="flex justify-center p-2 space-x-3 border-t border-primary/50 mt-3 pt-3">
               {LangButtons}
             </div>

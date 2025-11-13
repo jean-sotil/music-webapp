@@ -1,14 +1,15 @@
 "use client";
 
 import type React from "react";
+
 import { useAppContext } from "@/context";
 
-import Container from "../../atoms/Container";
 import Button from "../../atoms/Button";
+import Container from "../../atoms/Container";
 
-const Footer: React.FC<{}> = () => {
+const Footer: React.FC = () => {
   const { content, getLocalizedContent, lang } = useAppContext();
-  const djName = content.settings.djName;
+  const { name } = content.settings;
   const contactEmail = content.contact.email;
   const localizedContent = getLocalizedContent(lang);
   const currentYear = new Date().getFullYear();
@@ -26,7 +27,7 @@ const Footer: React.FC<{}> = () => {
           </Button>
 
           <p className="mt-6 text-gray-500">
-            &copy; {currentYear} {djName}. All Rights Reserved.
+            &copy; {currentYear} {name}. All Rights Reserved.
           </p>
         </div>
       </footer>

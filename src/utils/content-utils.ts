@@ -1,5 +1,23 @@
-import fs from 'fs';
-import path from 'path';
+import fs from "node:fs";
+import path from "node:path";
+
+type LocalizedContent = {
+  navigation: {
+    releases: string;
+    listen: string;
+    contact: string;
+  };
+  hero: {
+    tagline: string;
+    cta: string;
+  };
+  sections: {
+    latestWork: string;
+    fullCatalog: string;
+    getInTouch: string;
+    contactPrompt: string;
+  };
+};
 
 export type ContentType = {
   settings: {
@@ -12,7 +30,7 @@ export type ContentType = {
       background: string;
       text: string;
     };
-    defaultLang: 'en' | 'es';
+    defaultLang: "en" | "es";
   };
   contact: {
     email: string;
@@ -26,22 +44,23 @@ export type ContentType = {
     isNewRelease: boolean;
     listenLink: string;
   }[];
-  [key: string]: any; 
+  en: LocalizedContent;
+  es: LocalizedContent;
 };
 
-const CONTENT_FILE_NAME = 'data.json';
-const CONTENT_DIR = '/src/utils';
+const CONTENT_FILE_NAME = "data.json";
+const CONTENT_DIR = "/src/utils";
 
- /**
+/**
   * Reads the json file and returns its parsed content.
   @returns {ContentType} The parsed content of the .json file.
  */
 export function getContent(): ContentType {
   const filePath = path.join(process.cwd(), CONTENT_DIR, CONTENT_FILE_NAME);
-  
+
   console.log("Reading content from:", filePath);
   try {
-    const fileContents = fs.readFileSync(filePath, 'utf8');
+    const fileContents = fs.readFileSync(filePath, "utf8");
     return JSON.parse(fileContents) as ContentType;
   } catch (error) {
     console.error("Error reading content file:", error);
@@ -54,7 +73,7 @@ export function getContent(): ContentType {
  * @param lang - The desired language ('en' or 'es').
  * @returns The localized text content.
  */
-export function getLocalizedContent(lang: 'en' | 'es'): ContentType['en'] {
+export function getLocalizedContent(lang: "en" | "es"): LocalizedContent {
   const content = getContent();
   return content[lang];
 }

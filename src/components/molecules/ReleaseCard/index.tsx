@@ -1,20 +1,20 @@
 "use client";
 
-import React from "react";
+import Image from "next/image";
+import type React from "react";
 
-import { ContentType } from "@/utils/content-utils";
+import type { ContentType } from "@/utils/content-utils";
 
 import Button from "../../atoms/Button";
 import Card from "../../atoms/Card";
-import Image from "next/image";
 import Title from "../../atoms/Title";
 
 interface ReleaseCardProps {
-  release: ContentType["en"]["releases"][0];
+  release: ContentType["releases"][0];
 }
 
 const ReleaseCard: React.FC<ReleaseCardProps> = ({ release }) => {
-  const { title, date, description, coverPath, listenLink } = release;
+  const { title, coverPath, listenLink } = release;
 
   return (
     <Card>
@@ -29,8 +29,6 @@ const ReleaseCard: React.FC<ReleaseCardProps> = ({ release }) => {
       </div>
       <div className="flex flex-col gap-2">
         <Title level={3}>{title}</Title>
-        <p>{date}</p>
-        <p>{description}</p>
         <Button href={listenLink}>Listen Now</Button>
       </div>
     </Card>

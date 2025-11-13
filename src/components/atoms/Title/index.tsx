@@ -1,6 +1,7 @@
-'use client';
+"use client";
 
-import React, { JSX } from "react";
+import type React from "react";
+import type { JSX } from "react";
 import { twMerge } from "tailwind-merge";
 
 interface TitleProps {

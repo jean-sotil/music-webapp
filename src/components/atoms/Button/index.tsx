@@ -1,7 +1,7 @@
 "use client";
 
-import React from "react";
 import Link from "next/link";
+import type React from "react";
 import { twMerge } from "tailwind-merge";
 
 interface BaseProps {
@@ -53,7 +53,8 @@ const Button: React.FC<CombinedProps> = ({
   const finalClasses = twMerge(
     sizeClasses[size],
     variantClasses[variant],
-    transparent && "bg-transparent border-none text-inherit hover:bg-transparent focus:ring-0",
+    transparent &&
+      "bg-transparent border-none text-inherit hover:bg-transparent focus:ring-0",
     className,
   );
 
