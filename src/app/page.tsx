@@ -1,36 +1,14 @@
 import Container from "@/components/atoms/Container";
 import Hero from "@/components/molecules/Hero";
-import ReleasesGrid from "@/components/organisms/ReleasesGrid";
+import ReleasesSlider from "@/components/organisms/ReleasesSlider";
 
-// import ReleasesGrid from '@/components/ReleasesGrid';
-// import MusicEmbed from '@/components/MusicEmbed';
-// import ContactSection from '@/components/ContactSection';
-
-export default function Home() {
-  return (
-    <Container className="mx-auto w-full">
-      <div id="hero">
-        <Hero />
-      </div>
-
-      <section id="releases">
-        <ReleasesGrid />
-      </section>
-
-      <hr className="my-16 border-secondary/20 border-t" />
-
-      {/* ==================================================
-        SECTION 3: MUSIC EMBED
-        (Will be replaced by <MusicEmbed /> in Task 9)
-        ==================================================
-      */}
-      <section id="music" className="mb-16"></section>
-
-      {/* ==================================================
-        SECTION 4: CONTACT (The actual contact section is in the footer, 
-        but we'll include a link or a brief section here if needed)
-        ==================================================
-      */}
+const sections = [
+  { id: "hero", component: <Hero /> },
+  { id: "releases", component: <ReleasesSlider /> },
+  { id: "music", component: <section id="music" className="mb-16"></section> },
+  {
+    id: "contact",
+    component: (
       <section id="contact" className="mb-16 text-center">
         <h2 className="mb-6 font-bold text-4xl text-primary uppercase">
           Get in Touch
@@ -43,6 +21,18 @@ export default function Home() {
           to send an email!
         </p>
       </section>
+    ),
+  },
+];
+
+export default function Home() {
+  return (
+    <Container className="mx-auto w-full">
+      {sections.map((section) => (
+        <section key={section.id} id={section.id} className="mb-16">
+          {section.component}
+        </section>
+      ))}
     </Container>
   );
 }
