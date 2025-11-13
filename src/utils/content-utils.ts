@@ -57,8 +57,6 @@ const CONTENT_DIR = "/src/utils";
  */
 export function getContent(): ContentType {
   const filePath = path.join(process.cwd(), CONTENT_DIR, CONTENT_FILE_NAME);
-
-  console.log("Reading content from:", filePath);
   try {
     const fileContents = fs.readFileSync(filePath, "utf8");
     return JSON.parse(fileContents) as ContentType;

@@ -35,18 +35,7 @@ export default function RootLayout({
 
   return (
     <html lang="en" className={roboto.className}>
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
-        <link
-          rel="preconnect"
-          href="https://firebaseremoteconfig.googleapis.com"
-        />
-      </head>
+      <head></head>
       <body style={customStyles}>
         <AppContext content={content}>
           <Layout>{children}</Layout>

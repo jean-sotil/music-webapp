@@ -32,7 +32,7 @@ const Header: React.FC = () => {
     <Button
       key={item.name}
       href={item.href}
-      className="hover:text-primary font-semibold text-black uppercase"
+      className="font-semibold text-black uppercase hover:text-primary"
       onClick={() => setIsOpen(false)}
       transparent
       size="md"
@@ -47,8 +47,8 @@ const Header: React.FC = () => {
       // TODO:
       // Temporary handler: change the route/state
       onClick={() => console.log(`Switching language to ${l}`)}
-      className={`rounded px-2 text-sm font-semibold uppercase transition-colors duration-200 ${
-        l === lang ? "text-primary" : "hover:text-primary text-black"
+      className={`rounded px-2 font-semibold text-sm uppercase transition-colors duration-200 ${
+        l === lang ? "text-primary" : "text-black hover:text-primary"
       }`}
       size="md"
       transparent
@@ -66,7 +66,7 @@ const Header: React.FC = () => {
   };
 
   return (
-    <header className="bg-secondary/90 border-primary/50 fixed top-0 left-0 z-50 w-full border-b shadow-lg backdrop-blur-sm">
+    <header className="fixed top-0 left-0 z-50 w-full border-primary/50 border-b bg-secondary/90 shadow-lg backdrop-blur-sm">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           {/* Desktop Navigation */}
@@ -80,7 +80,7 @@ const Header: React.FC = () => {
           <div className="flex items-center md:hidden">
             <button
               type="button"
-              className="text-primary hover:text-secondary inline-flex items-center justify-center rounded-md p-2 focus:outline-none"
+              className="inline-flex items-center justify-center rounded-md p-2 text-primary hover:text-secondary focus:outline-none"
               onClick={() => setIsOpen(!isOpen)}
             >
               <span className="sr-only">Open main menu</span>
@@ -112,7 +112,7 @@ const Header: React.FC = () => {
           <div className="shrink-0">
             <Button
               href="/"
-              className="font-extrabold tracking-wider text-black"
+              className="font-extrabold text-black tracking-wider"
               transparent
               size="lg"
             >
@@ -124,11 +124,11 @@ const Header: React.FC = () => {
 
       {/* Mobile Menu Panel */}
       {isOpen && (
-        <div className="bg-background border-primary/50 border-t md:hidden">
+        <div className="border-primary/50 border-t bg-background md:hidden">
           <div className="space-y-1 px-2 pt-2 pb-3 sm:px-3">
             {navButtons}
 
-            <div className="border-primary/50 mt-3 flex justify-center space-x-3 border-t p-2 pt-3">
+            <div className="mt-3 flex justify-center space-x-3 border-primary/50 border-t p-2 pt-3">
               {LangButtons}
             </div>
           </div>

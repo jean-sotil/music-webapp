@@ -17,7 +17,7 @@ export default function Home() {
         <ReleasesGrid />
       </section>
 
-      <hr className="border-secondary/20 my-16 border-t" />
+      <hr className="my-16 border-secondary/20 border-t" />
 
       {/* ==================================================
         SECTION 3: MUSIC EMBED
@@ -32,7 +32,7 @@ export default function Home() {
         ==================================================
       */}
       <section id="contact" className="mb-16 text-center">
-        <h2 className="text-primary mb-6 text-4xl font-bold uppercase">
+        <h2 className="mb-6 font-bold text-4xl text-primary uppercase">
           Get in Touch
         </h2>
         <p className="text-xl">

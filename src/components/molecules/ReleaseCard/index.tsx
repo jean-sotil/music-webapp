@@ -20,11 +20,12 @@ const ReleaseCard: React.FC<ReleaseCardProps> = ({ release }) => {
     <Card>
       <div className="relative aspect-square w-full">
         <Image
-          src={coverPath}
           alt={`${title} Cover Art`}
+          className="object-cover transition-opacity duration-300 group-hover:opacity-80"
+          fetchPriority="low"
           fill
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          className="object-cover transition-opacity duration-300 group-hover:opacity-80"
+          src={coverPath}
         />
       </div>
       <div className="flex flex-col gap-2">
