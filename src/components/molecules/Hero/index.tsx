@@ -37,7 +37,7 @@ const HeroSection: React.FC = () => {
           {localizedContent.hero.tagline}
         </p>
 
-        <Button href={listenLink} target="_blank">
+        <Button href="/shop">
           {localizedContent.hero.cta}
         </Button>
 
