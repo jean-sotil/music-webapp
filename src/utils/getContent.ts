@@ -42,17 +42,17 @@ export type ContentType = {
   };
   releases: {
     id: number;
-    title: string;
-    coverPath: string;
+    image: string;
     isNewRelease: boolean;
-    listenLink: string;
+    title: string;
+    url: string;
   }[];
   en: LocalizedContent;
   es: LocalizedContent;
 };
 
-const CONTENT_FILE_NAME = "data.json";
-const CONTENT_DIR = "/src/utils";
+const CONTENT_FILE_NAME = "content.json";
+const CONTENT_DIR = "/src/data";
 
 /**
   * Reads the json file and returns its parsed content.

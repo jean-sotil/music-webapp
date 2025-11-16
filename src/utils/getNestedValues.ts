@@ -1,4 +1,4 @@
-import type { ContentType, Langs } from "@/utils/actions/content-utils";
+import type { ContentType, Langs } from "@/utils/getContent";
 
 type LocalizedContent = ContentType[Langs];
 

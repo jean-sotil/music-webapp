@@ -1,14 +1,13 @@
-import "@/theme/index.css";
+import "@/styles/index.css";
 
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 
 import Layout from "@/components/organisms/Layout";
-
 import AppContext from "@/context";
-
-import type { Langs } from "@/utils/actions/content-utils";
-import { getContent } from "@/utils/actions/content-utils";
+import QueryProvider from "@/providers";
+import type { Langs } from "@/utils/getContent";
+import { getContent } from "@/utils/getContent";
 
 const content = getContent();
 
@@ -42,9 +41,11 @@ export default async function RootLayout({
   return (
     <html lang={lang} className={roboto.className}>
       <body style={customStyles}>
-        <AppContext content={content} lang={lang}>
-          <Layout>{children}</Layout>
-        </AppContext>
+        <QueryProvider>
+          <AppContext content={content} lang={lang}>
+            <Layout>{children}</Layout>
+          </AppContext>
+        </QueryProvider>
       </body>
     </html>
   );

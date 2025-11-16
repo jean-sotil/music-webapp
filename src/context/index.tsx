@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useMemo, useState } from "react";
 
-import type { ContentType, Langs } from "@/utils/actions/content-utils";
+import type { ContentType, Langs } from "@/utils/getContent";
 
 export type AppContextType = {
   content: ContentType;

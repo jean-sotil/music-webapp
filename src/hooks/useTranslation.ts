@@ -1,4 +1,4 @@
-import getNestedValue from "@/utils/libs/getNestedValues";
+import getNestedValue from "@/utils/getNestedValues";
 import { useAppContext } from "./useAppContext";
 
 export const useTranslation = (path: string) => {

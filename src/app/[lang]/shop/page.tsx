@@ -1,7 +1,7 @@
 import type React from "react";
 
-import ReleasesGrid from "@/components/organisms/ReleasesGrid";
 import Title from "@/components/atoms/Title";
+import ReleasesGrid from "@/components/organisms/ReleasesGrid";
 
 const ShopPage: React.FC = () => {
   return (

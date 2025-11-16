@@ -1,9 +1,9 @@
 import type React from "react";
 import { Suspense } from "react";
 
-import { getAllReleases } from "@/utils/actions/content-utils";
+import { getAllReleases } from "@/utils/getContent";
 
-import Container from "../../atoms/Container";
+import Container from "../../molecules/Container";
 import ReleaseCard from "../../molecules/ReleaseCard";
 
 interface ReleasesGridProps {

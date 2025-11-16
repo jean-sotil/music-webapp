@@ -5,7 +5,7 @@ import type React from "react";
 import { useCallback, useMemo, useState } from "react";
 
 import { useAppContext } from "@/context";
-import type { Langs } from "@/utils/actions/content-utils";
+import type { Langs } from "@/utils/getContent";
 
 import Button from "../../atoms/Button";
 

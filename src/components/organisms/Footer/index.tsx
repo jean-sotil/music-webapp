@@ -5,7 +5,7 @@ import type React from "react";
 import { useAppContext } from "@/context";
 
 import Button from "../../atoms/Button";
-import Container from "../../atoms/Container";
+import Container from "../../molecules/Container";
 
 const Footer: React.FC = () => {
   const { content, localizedContent } = useAppContext();

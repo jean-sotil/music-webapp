@@ -5,8 +5,8 @@ import type React from "react";
 import { useAppContext } from "@/context";
 
 import Button from "../../atoms/Button";
-import Container from "../../atoms/Container";
 import Title from "../../atoms/Title";
+import Container from "../Container";
 
 const HeroSection: React.FC = () => {
   const { content, localizedContent } = useAppContext();
@@ -22,7 +22,7 @@ const HeroSection: React.FC = () => {
     );
   }
 
-  const { title, listenLink } = newRelease;
+  const { title } = newRelease;
 
   return (
     <Container className="relative flex h-screen items-center">
@@ -37,9 +37,7 @@ const HeroSection: React.FC = () => {
           {localizedContent.hero.tagline}
         </p>
 
-        <Button href="/shop">
-          {localizedContent.hero.cta}
-        </Button>
+        <Button href="/shop">{localizedContent.hero.cta}</Button>
 
         <p className="mt-6 text-gray-300 text-sm">{title} is out now!</p>
       </div>

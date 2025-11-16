@@ -3,7 +3,7 @@
 import Image from "next/image";
 import type React from "react";
 
-import type { ContentType } from "@/utils/actions/content-utils";
+import type { ContentType } from "@/utils/getContent";
 
 import Button from "../../atoms/Button";
 import Card from "../../atoms/Card";
@@ -14,7 +14,7 @@ interface ReleaseCardProps {
 }
 
 const ReleaseCard: React.FC<ReleaseCardProps> = ({ release }) => {
-  const { title, coverPath, listenLink } = release;
+  const { title, url, image } = release;
 
   return (
     <Card>
@@ -25,12 +25,12 @@ const ReleaseCard: React.FC<ReleaseCardProps> = ({ release }) => {
           fetchPriority="low"
           fill
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          src={coverPath}
+          src={image}
         />
       </div>
       <div className="flex flex-col gap-2">
         <Title level={3}>{title}</Title>
-        <Button href={listenLink}>Listen Now</Button>
+        <Button href={url}>Listen Now</Button>
       </div>
     </Card>
   );
