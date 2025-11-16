@@ -31,7 +31,7 @@ const Slider: React.FC<SliderProps> = ({
   slides,
   isMobile,
 }) => {
-  const slidesPerView = isMobile ? 1 : 4;
+  const slidesPerView = isMobile ? 1 : 6;
   const modules = [Pagination, Navigation];
 
   if (autoplay) {
@@ -39,19 +39,19 @@ const Slider: React.FC<SliderProps> = ({
   }
 
   return (
-    <div className={`w-full ${height} ${className || ""}`}>
+    <div className={`relative w-full ${height} ${className || ""}`}>
       <Swiper
         modules={modules}
-        spaceBetween={30}
         slidesPerView={slidesPerView}
-        pagination={{ clickable: true }}
+        pagination={true}
         navigation
+        spaceBetween={2}
         autoplay={{
           delay: 5000,
           disableOnInteraction: false,
         }}
         loop={infinite}
-        className="mySwiper h-full w-full"
+        className="mySwiper h-full w-full pb-8"
       >
         {slides.map(({ id, slide }) => (
           <SwiperSlide key={id}>{slide}</SwiperSlide>

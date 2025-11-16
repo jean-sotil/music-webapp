@@ -1,7 +1,8 @@
-import type React from "react";
-import { Suspense } from "react";
+"use client";
 
-import { getAllReleases } from "@/utils/getContent";
+import type React from "react";
+
+import { useReleases } from "@/hooks/useReleases";
 
 import Container from "../../molecules/Container";
 import ReleaseCard from "../../molecules/ReleaseCard";
@@ -11,26 +12,20 @@ interface ReleasesGridProps {
 }
 
 const ReleasesGrid: React.FC<ReleasesGridProps> = ({ title }) => {
-  const releases = getAllReleases();
-
-  const ReleaseCards = () => (
-    <div className="grid grid-cols-4 gap-4">
-      {releases.map((release) => (
-        <div key={release.id} className="col-span-1">
-          <ReleaseCard release={release} />
-        </div>
-      ))}
-    </div>
-  );
+  const { data: releases, isLoading } = useReleases();
 
   return (
-    <Container>
+    <Container loading={isLoading}>
       <h2 className="mb-10 text-center font-bold text-4xl text-secondary uppercase">
         {title}
       </h2>
-      <Suspense fallback={<div>Loading releases...</div>}>
-        <ReleaseCards />
-      </Suspense>
+      <div className="grid grid-cols-4 gap-4">
+        {releases?.map((release) => (
+          <div key={release.id} className="col-span-1">
+            <ReleaseCard release={release} />
+          </div>
+        ))}
+      </div>
     </Container>
   );
 };

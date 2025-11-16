@@ -51,6 +51,7 @@ const Button: React.FC<CombinedProps> = ({
   };
 
   const finalClasses = twMerge(
+    "cursor-pointer",
     sizeClasses[size],
     variantClasses[variant],
     transparent &&

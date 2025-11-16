@@ -10,9 +10,9 @@ import Container from "../Container";
 
 const HeroSection: React.FC = () => {
   const { content, localizedContent } = useAppContext();
-  const newRelease = content.releases.find((release) => release.isNewRelease);
+  const newProduct = content.products.find((product) => product.isNewProduct);
 
-  if (!newRelease) {
+  if (!newProduct) {
     return (
       <section className="flex min-h-[70vh] items-center justify-center text-center">
         <p className="text-gray-400 text-xl">
@@ -22,7 +22,7 @@ const HeroSection: React.FC = () => {
     );
   }
 
-  const { title } = newRelease;
+  const { title } = newProduct;
 
   return (
     <Container className="relative flex h-screen items-center">
@@ -33,13 +33,13 @@ const HeroSection: React.FC = () => {
       <div className="relative z-10 w-full text-center">
         <Title level={1}>{title}</Title>
 
-        <p className="mb-10 font-light text-lg text-text-color/80 md:text-xl">
+        <p className="mb-10 font-light text-lg text-text md:text-xl">
           {localizedContent.hero.tagline}
         </p>
 
         <Button href="/shop">{localizedContent.hero.cta}</Button>
 
-        <p className="mt-6 text-gray-300 text-sm">{title} is out now!</p>
+        <p className="mt-6 text-sm text-text">{title} is out now!</p>
       </div>
     </Container>
   );

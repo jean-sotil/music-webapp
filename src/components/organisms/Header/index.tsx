@@ -5,7 +5,7 @@ import type React from "react";
 import { useCallback, useMemo, useState } from "react";
 
 import { useAppContext } from "@/context";
-import type { Langs } from "@/utils/getContent";
+import type { Langs } from "@/types/content";
 
 import Button from "../../atoms/Button";
 
@@ -82,7 +82,7 @@ const Header: React.FC = () => {
   };
 
   return (
-    <header className="fixed top-0 left-0 z-50 w-full border-primary/50 border-b bg-secondary/90 shadow-lg backdrop-blur-sm">
+    <header className="fixed top-0 left-0 z-50 w-full border-primary/50 border-b bg-background shadow-lg backdrop-blur-sm">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           {/* Desktop Navigation */}

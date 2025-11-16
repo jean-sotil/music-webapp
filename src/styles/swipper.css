@@ -3,6 +3,10 @@
   color: var(--color-primary);
 }
 
+.mySwiper .swiper-pagination {
+  bottom: -20px;
+}
+
 .mySwiper .swiper-pagination-bullet-active {
   background: var(--color-primary);
 }

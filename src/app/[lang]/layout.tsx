@@ -6,7 +6,7 @@ import { Roboto } from "next/font/google";
 import Layout from "@/components/organisms/Layout";
 import AppContext from "@/context";
 import QueryProvider from "@/providers";
-import type { Langs } from "@/utils/getContent";
+import type { Langs } from "@/types/content";
 import { getContent } from "@/utils/getContent";
 
 const content = getContent();

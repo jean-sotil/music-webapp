@@ -13,7 +13,7 @@ interface TitleProps {
 const Title = ({ children, className, level }: TitleProps) => {
   const baseStyles: { [key in TitleProps["level"]]: string } = {
     1: "text-5xl md:text-6xl font-black uppercase text-primary tracking-tight",
-    2: "text-4xl md:text-5xl font-bold uppercase text-secondary",
+    2: "text-4xl md:text-5xl font-bold uppercase text-primary",
     3: "text-3xl md:text-4xl font-semibold text-text-color",
     4: "text-2xl md:text-3xl font-medium text-text-color",
     5: "text-xl md:text-2xl font-normal text-text-color",
