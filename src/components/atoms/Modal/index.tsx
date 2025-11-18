@@ -1,7 +1,8 @@
 "use client";
 
-import React from "react";
 import { useRouter } from "next/navigation";
+import type React from "react";
+import { useCallback, useEffect } from "react";
 import { twMerge } from "tailwind-merge";
 
 import Button from "../Button";
@@ -14,8 +15,28 @@ interface ModalProps {
 const Modal: React.FC<ModalProps> = ({ children, contentClassName }) => {
   const router = useRouter();
 
-  const handleClose = () => {
+  const handleClose = useCallback(() => {
     router.back();
+  }, [router]);
+
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        handleClose();
+      }
+    };
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [handleClose]);
+
+  const handleOverlayKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
+    if (event.key === "Enter" || event.key === " ") {
+      if (event.target === event.currentTarget) {
+        handleClose();
+      }
+    }
   };
 
   const baseContentClasses =
@@ -24,10 +45,17 @@ const Modal: React.FC<ModalProps> = ({ children, contentClassName }) => {
 
   return (
     <div
-      className="fixed inset-0 z-100 bg-background/90 backdrop-blur-sm flex items-center justify-center p-4 transition-opacity duration-300"
-      onClick={handleClose}
+      className="fixed inset-0 z-100 flex items-center justify-center bg-background/90 p-4 backdrop-blur-sm transition-opacity duration-300"
+      onClick={(e) => {
+        if (e.target === e.currentTarget) {
+          handleClose();
+        }
+      }}
+      onKeyDown={handleOverlayKeyDown}
+      role="dialog"
+      aria-label="Close modal"
     >
-      <div className={finalContentClasses} onClick={(e) => e.stopPropagation()}>
+      <div className={finalContentClasses}>
         <Button onClick={handleClose} aria-label="Close button">
           &times;
         </Button>

@@ -49,14 +49,14 @@ export const useCartStore = create<CartState>((set, get) => ({
   getTotalItems: () => {
     return get().items.reduce(
       (total, item) => total + (item?.quantity ?? 0),
-      0
+      0,
     );
   },
 
   getTotalPrice: () => {
     return get().items.reduce(
       (total, item) => total + (item.price ?? 0) * (item.quantity ?? 0),
-      0
+      0,
     );
   },
 }));

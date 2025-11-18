@@ -12,7 +12,7 @@ export default function ProductsRootLayout({
   modal,
 }: ProductsRootLayoutProps) {
   return (
-    <Container>
+    <Container className="relative">
       {children}
       {modal}
     </Container>

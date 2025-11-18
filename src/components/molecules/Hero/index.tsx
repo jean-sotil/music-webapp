@@ -11,7 +11,7 @@ import Container from "../Container";
 const HeroSection: React.FC = () => {
   const { localizedContent } = useAppContext();
   const newProduct = localizedContent.products.items.find(
-    (product) => product.isNewProduct
+    (product) => product.isNewProduct,
   );
 
   if (!newProduct) {

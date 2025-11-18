@@ -2,7 +2,7 @@ import "@/styles/index.css";
 
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
-import { type ReactNode } from "react";
+import type React from "react";
 
 import Layout from "@/components/organisms/Layout";
 import AppContext from "@/context";
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
 };
 
 interface RootLayoutProps {
-  children: ReactNode;
+  children: React.ReactNode;
   params: Promise<{ lang: string }>;
 }
 

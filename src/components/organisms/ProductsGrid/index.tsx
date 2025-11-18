@@ -4,13 +4,13 @@ import type React from "react";
 
 import { useAppContext } from "@/context";
 
+import Title from "../../atoms/Title";
 import Container from "../../molecules/Container";
 import ProductCard from "../../molecules/ProductCard";
-import Title from "../../atoms/Title";
 
 const ProductGrid: React.FC = () => {
   const { localizedContent } = useAppContext();
-  const { cta, title, items } = localizedContent.products
+  const { cta, title, items } = localizedContent.products;
 
   return (
     <Container>

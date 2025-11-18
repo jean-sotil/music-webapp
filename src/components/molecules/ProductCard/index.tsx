@@ -3,11 +3,11 @@
 import Image from "next/image";
 import type React from "react";
 
-import { LocalizedProduct } from "@/types/content";
+import type { LocalizedProduct } from "@/types/content";
 
-import Title from "../../atoms/Title";
-import Card from "../../atoms/Card";
 import Button from "../../atoms/Button";
+import Card from "../../atoms/Card";
+import Title from "../../atoms/Title";
 
 interface ReleaseCardProps {
   cta?: string;

@@ -1,9 +1,9 @@
-import { getProductById, getContent } from "@/utils/getContent";
-import { Langs } from "@/types/content";
-
-import ProductPDP from "@/components/organisms/ProductPDP";
-import Modal from "@/components/atoms/Modal";
 import { notFound } from "next/navigation";
+
+import Modal from "@/components/atoms/Modal";
+import ProductPDP from "@/components/organisms/ProductPDP";
+import type { Langs } from "@/types/content";
+import { getContent, getProductById } from "@/utils/getContent";
 
 type ProductParamsType = Promise<{ id: string; lang: string }>;
 
