@@ -2,6 +2,7 @@ import "@/styles/index.css";
 
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
+import { type ReactNode } from "react";
 
 import Layout from "@/components/organisms/Layout";
 import AppContext from "@/context";
@@ -22,20 +23,25 @@ export const metadata: Metadata = {
   description: content.settings.description,
 };
 
+interface RootLayoutProps {
+  children: ReactNode;
+  params: Promise<{ lang: string }>;
+}
+
 export default async function RootLayout({
   children,
   params,
-}: {
-  children: React.ReactNode;
-  params: Promise<{ lang: string }>;
-}) {
+}: RootLayoutProps) {
   const { lang } = (await params) as { lang: Langs };
+  const {
+    settings: { theme },
+  } = content;
 
   const customStyles = {
-    "--color-primary": content.settings.theme.primary,
-    "--color-secondary": content.settings.theme.secondary,
-    "--color-background": content.settings.theme.background,
-    "--color-text": content.settings.theme.text,
+    "--color-primary": theme.primary,
+    "--color-secondary": theme.secondary,
+    "--color-background": theme.background,
+    "--color-text": theme.text,
   } as React.CSSProperties;
 
   return (

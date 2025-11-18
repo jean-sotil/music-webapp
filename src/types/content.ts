@@ -1,5 +1,16 @@
 export type Langs = "en" | "es";
 
+export type LocalizedProduct = {
+  description: string;
+  id: number;
+  image: string;
+  isNewProduct: boolean;
+  price?: number;
+  quantity?: number;
+  title: string;
+  url: string;
+};
+
 export type LocalizedContent = {
   navigation: {
     releases: string;
@@ -18,6 +29,12 @@ export type LocalizedContent = {
     fullCatalog: string;
     getInTouch: string;
     contactPrompt: string;
+  };
+  products: {
+    cta: string;
+    items: LocalizedProduct[];
+    notFound: string;
+    title: string;
   };
 };
 
@@ -40,13 +57,6 @@ export type ContentType = {
     instagram: string;
     spotify: string;
   };
-  products: {
-    id: number;
-    title: string;
-    image: string;
-    isNewProduct: boolean;
-    url: string;
-  }[];
   en: LocalizedContent;
   es: LocalizedContent;
 };

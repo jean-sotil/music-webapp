@@ -66,6 +66,7 @@ const Button: React.FC<CombinedProps> = ({
 
     return (
       <Link
+        {...props}
         href={linkProps.href}
         className={finalClasses}
         onClick={
@@ -85,6 +86,7 @@ const Button: React.FC<CombinedProps> = ({
 
   return (
     <button
+      {...props}
       type={buttonProps.type ?? "button"}
       onClick={
         onClick as

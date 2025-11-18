@@ -9,8 +9,10 @@ import Title from "../../atoms/Title";
 import Container from "../Container";
 
 const HeroSection: React.FC = () => {
-  const { content, localizedContent } = useAppContext();
-  const newProduct = content.products.find((product) => product.isNewProduct);
+  const { localizedContent } = useAppContext();
+  const newProduct = localizedContent.products.items.find(
+    (product) => product.isNewProduct
+  );
 
   if (!newProduct) {
     return (
@@ -31,13 +33,13 @@ const HeroSection: React.FC = () => {
       </div>
 
       <div className="relative z-10 w-full text-center">
-        <Title level={1}>{title}</Title>
+        <Title level={1}>{newProduct.title}</Title>
 
         <p className="mb-10 font-light text-lg text-text md:text-xl">
           {localizedContent.hero.tagline}
         </p>
 
-        <Button href="/shop">{localizedContent.hero.cta}</Button>
+        <Button href="/products">{localizedContent.hero.cta}</Button>
 
         <p className="mt-6 text-sm text-text">{title} is out now!</p>
       </div>

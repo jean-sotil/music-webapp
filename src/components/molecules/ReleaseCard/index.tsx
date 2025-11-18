@@ -3,13 +3,13 @@
 import Image from "next/image";
 import type React from "react";
 
-import type { ReleasesType } from "@/types/releases";
+import type { ReleaseItem } from "@/types/releases";
 
 import Button from "../../atoms/Button";
 import Title from "../../atoms/Title";
 
 interface ReleaseCardProps {
-  release: ReleasesType[0];
+  release: ReleaseItem;
 }
 
 const ReleaseCard: React.FC<ReleaseCardProps> = ({ release }) => {
@@ -18,7 +18,7 @@ const ReleaseCard: React.FC<ReleaseCardProps> = ({ release }) => {
   return (
     <Button className="relative aspect-square w-full" href={url}>
       <Image
-        alt={`${title} Cover Art`}
+        alt={title}
         className="object-cover transition-opacity duration-300 group-hover:opacity-80"
         fetchPriority="low"
         fill

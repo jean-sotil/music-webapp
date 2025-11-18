@@ -1,7 +1,9 @@
-export type ReleasesType = {
+export type ReleaseItem = {
   id: number;
-  title: string;
   image: string;
   isNewRelease: boolean;
+  title: string;
   url: string;
-}[];
+};
+
+export type ReleasesType = ReleaseItem[];
